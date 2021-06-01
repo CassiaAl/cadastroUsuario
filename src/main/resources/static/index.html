@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<!-- Favicon-->
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+<!-- Bootstrap Icons-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+<!-- Google fonts-->
+<link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700"	rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+<!-- SimpleLightbox plugin CSS-->
+<link ref="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css"	rel="stylesheet" />
+<link href="startbootstrap-creative-gh-pages/css/styles.css" rel="stylesheet" />
+
+<title>Projeto - Estágio</title>
+</head>
+
+<body id="page-top">
+	<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+		<div class="container px-4 px-lg-5">
+			<a class="navbar-brand" href="#page-top">Cássia Alves</a>
+			  <button class="navbar-toggler navbar-toggler-right" type="button"	data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"	aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			 </button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ms-auto my-2 my-lg-0">
+					<li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+
+	<header class="masthead">
+		<div class="container px-4 px-lg-5 h-100">
+			<div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+				<div class="col-lg-8 align-self-end">
+					<h1 class="text-white font-weight-bold">Bem-vindo(a) a apresentação do meu projetinho CRUD</h1>
+					<hr class="divider" />
+				</div>
+				<div class="col-lg-8 align-self-baseline">
+					<p class="text-white-75 mb-5">Realizado com as seguintes tecnologias: Java SpringBoot, JavaScript, Ajax,jQuery, PostgreSQL e
+						Bootstrap. Com código disponível no github.</p>
+					<a class="btn btn-primary btn-xl" href="#inicio"> Conheça </a>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<section class="page-section bg-primary">
+		<div class="container px-4 px-lg-5">
+			<div class="row gx-4 gx-lg-5 justify-content-center">
+				<div class="col-lg-8 text-center">
+					<h2 class="text-white mt-0" id="inicio">Cadastro de Usuário</h2>
+					<hr class="divider divider-light" />
+					<p class="text-white-75 mb-4">Para começar insira um nome e uma	idade</p>
+
+					<form action="" id="formCadastroUser">
+						<div class="form-floating mb-3">
+							<input class="form-control" id="id" type="text"	readonly="readonly" /> <label for="id">ID</label>
+						</div>
+						<div class="form-floating mb-3">
+							<input class="form-control" id="nome" type="text" placeholder="Insira o nome..." /> <label for="nome">Nome Completo</label>
+						</div>
+						<div class="form-floating mb-3">
+							<input class="form-control" id="idade" type="number" placeholder="Insira a idade..." /> <label for="idade">Idade</label>
+						</div>
+
+						<hr class="divider divider-light" />
+						<button type="button" class="btn btn-success" onclick="salvarUsuario()">Salvar</button>
+						<button type="button" class="btn btn-secondary"	onclick=document.getElementById('formCadastroUser').reset();>Novo</button>
+						<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">Pesquisar</button>
+						<button type="button" class="btn btn-danger" onclick="botaoExcluirTela()">Excluir</button>
+					</form>
+					
+					<div class="modal fade" id="exampleModal" tabindex="-1"	aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">Pesquisa	de Usuário</h5>
+										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+									</div>
+									<div class="modal-body">
+										<form>
+											<div class="mb-3">
+												<label for="nameBusca" class="col-form-label">Informe
+													o nome:</label> <input type="text" class="form-control"
+													id="nameBusca">
+											</div>
+											<button type="button" class="btn btn-success" onclick="pesquisarUser()">Buscar</button>
+
+											<!-- <button type="button" class="btn btn-success"
+												onclick="pesquisarUser2()">Buscar</button>-->
+
+
+										</form>
+										<br> <br>
+										<div style="heigth: 400px; overflow: scroll;">
+											<table class="table" id="tabelaResultado">
+												<thead>
+													<tr>
+														<th scope="col">ID</th>
+														<th scope="col">Nome</th>
+														<th scope="col">Idade</th>
+														<th scope="col"></th>
+														<th scope="col"></th>
+													</tr>
+												</thead>
+												<tbody>
+
+												</tbody>
+											</table>
+										</div>
+									</div>
+									
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary"	data-bs-dismiss="modal">Fechar</button>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+	</section>
+	
+	<section class="page-section bg-dark text-white" id="contato">
+		<div class="container px-4 px-lg-5 text-center">
+			<h2 class="mb-4">Contato</h2>
+			<div class="row gx-4 gx-lg-5 justify-content-center">
+				<div class="col-lg-4 text-center mb-5 mb-lg-0">
+					<i class="bi-phone fs-2 mb-3 text-muted"></i>
+					<div><h1>(14) 99188-0645</h1></div>
+					<div><h3>caslencoispta@hotmail.com</h3></div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<footer class="bg-light py-5">
+		<div class="container px-4 px-lg-5">
+			<div class="small text-center text-muted">Copyright &copy; 2021	- Cássia Alves</div>
+		</div>
+	</footer>
+
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"	integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"	crossorigin="anonymous"></script>
+
+	<script type="text/javascript">
+		function salvarUsuario(){
+			var id = $("#id").val();
+			var nome = $("#nome").val();
+			var idade = $("#idade").val();
+			
+			if(nome == null || nome != null && nome.trim() == '' ){
+				alert("Informe o nome");
+				return;
+			}
+			
+			if(idade == null || idade != null && idade.trim() == '' ){
+				alert("Informe a idade");
+				return;
+			}
+
+			$.ajax({
+				method:"POST",
+				url:"salvar",
+				data : JSON.stringify({
+					id: id,
+					nome : nome, 
+					idade : idade
+					}),
+				contentType : "application/json; charset-utf-8",
+				success : function(response) {
+					
+					$("#id").val(response.id);
+					alert("Salvo com sucesso !");
+				}
+			}).fail(function(xhr, status, errorThrown) {
+				alert("Erro ao salvar :" + xhr.responseText);
+			});
+		}
+		
+		
+		function pesquisarUser(){
+			var nome = $("#nameBusca").val();
+			
+			if (nome!= null && nome.trim() !=''){
+				$.ajax({
+					method:"GET",
+					url:"buscarPorNome",
+					data : "name=" + nome,
+			
+					success : function(response) {
+						$("#tabelaResultado > tbody > tr").remove();
+						for (var i = 0; i < response.length; i++){
+							$("#tabelaResultado > tbody").append('<tr id="'+response[i].id+'"><td>'+response[i].id+'</td><td>'+response[i].nome+'</td><td>'+response[i].idade+'</td><td><button type="button" class="btn btn-outline-primary" onclick="colocarEmEdicao('+response[i].id+')">Editar</button></td><td><button type="button" class="btn btn-outline-danger" onclick="deleteUser('+response[i].id+')">Excluir</button></td></tr>');
+						}
+					}
+				}).fail(function(xhr, status, errorThrown) {
+					alert("Erro ao salvar :" + xhr.responseText);
+				});
+			}
+		}
+		
+		
+	/*	function pesquisarUser2(){
+			
+				$.ajax({
+					method:"GET",
+					url:"listatodos",
+					data : "name=" + nome,
+			
+					success : function(response) {
+						$("#tabelaResultado > tbody > tr").remove();
+						for (var i = 0; i < response.length; i++){
+							$("#tabelaResultado > tbody").append('<tr id="'+response[i].id+'"><td>'+response[i].id+'</td><td>'+response[i].nome+'</td><td>'+response[i].idade+'</td><td><button type="button" class="btn btn-outline-primary" onclick="colocarEmEdicao('+response[i].id+')">Editar</button></td><td><button type="button" class="btn btn-outline-danger" onclick="deleteUser('+response[i].id+')">Excluir</button></td></tr>');
+						}
+					}
+				}).fail(function(xhr, status, errorThrown) {
+					alert("Erro ao salvar :" + xhr.responseText);
+				});
+			}
+		*/
+		
+		
+		function colocarEmEdicao(id){
+			var nome = $("#nameBusca").val();
+			
+			if (nome!= null && nome.trim() !=''){
+				$.ajax({
+					method:"GET",
+					url:"buscaruserid",
+					data : "iduser=" + id,
+			
+					success : function(response) {
+						 $("#id").val(response.id);
+						 $("#nome").val(response.nome);
+						 $("#idade").val(response.idade);
+						 
+						 $('#exampleModal').modal('hide');
+
+					}
+				}).fail(function(xhr, status, errorThrown) {
+					alert("Erro ao buscar usuario por id :" + xhr.responseText);
+				});
+			}
+		}
+		
+		
+		function deleteUser(id){
+			if(confirm('Deseja realmente excluir?')){
+				
+			
+			$.ajax({
+				method:"DELETE",
+				url:"delete",
+				data : "iduser=" + id,
+		
+				success : function(response) {
+					$('#'+id).remove();
+					 alert(response);
+
+				}
+			}).fail(function(xhr, status, errorThrown) {
+				alert("Erro ao deletar usuario por id :" + xhr.responseText);
+			});
+			}
+			
+		}
+		
+		function botaoExcluirTela(){
+			var id = $('#id').val();
+			if(id!= null && id.trim() != ''){
+			deleteUser(id);
+			}
+			document.getElementById('formCadastroUser').reset();
+			
+			
+		}
+	</script>
+	
+</body>
+</html>
